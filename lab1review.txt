@@ -1,0 +1,14 @@
+10 pts
+
+Both essays respond and address the question correctly. Good job!
+
+The DFA looks ok.
+
+You could use $\Sigma$ more to save some space. Lets say that you want to make
+an arrow if the next symbol is not an 'f', you could simply say $\{\Sigma - f\}$,
+which means the set of all possible symbols of the whole alphabet minus 'f'.
+
+You need to specify on a foot note what do you mean by this ¶, even though it
+may seem obvious to you or me.
+
+- Dr. Rivas
