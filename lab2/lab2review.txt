@@ -1,0 +1,37 @@
+9 pts
+
+Correctness:
+
+- The program produces correct output.
+
+- The program produces output in the correct format.
+
+- The program was supposed to run as follows:
+$ java driverDFA gncgwng
+but your program runs as:
+$ java ManWolf < input.txt 
+which is not what was indicated in the handout.
+
+
+Style:
+
+- Incorrect indentation in both the driver and ManWolf files. Please use a
+  two-space indentation.
+
+- Good block comments
+
+
+Efficiency and Other Comments:
+
+- Program is efficient as implemented.
+
+
+CSV files:
+
+- State-transition table looks good.
+
+- Usually the description of states only includes the state and its
+  corresponding description; a description of what it means to be in that
+  state.
+
+- Dr. Rivas
