@@ -48,6 +48,7 @@ public class Browser extends javax.swing.JFrame {
         runButton = new javax.swing.JButton();
         jComboBoxFont = new javax.swing.JComboBox();
         jComboBoxBackground = new javax.swing.JComboBox();
+        jResetButton = new javax.swing.JButton();
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -76,7 +77,7 @@ public class Browser extends javax.swing.JFrame {
         Font afont = new Font("TimesRoman", Font.PLAIN, 18);
         inputTextArea.setFont(afont);
 
-        runButton.setText("RUN");
+        runButton.setText("Run");
         runButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 runButtonActionPerformed(evt);
@@ -102,22 +103,28 @@ public class Browser extends javax.swing.JFrame {
             }
         });
 
+        jResetButton.setText("Reset");
+        jResetButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jResetButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1003, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(runButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jComboBoxFont, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxFont, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxBackground, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(runButton, javax.swing.GroupLayout.PREFERRED_SIZE, 491, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jResetButton, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +135,9 @@ public class Browser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(runButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(runButton)
+                    .addComponent(jResetButton)))
         );
 
         pack();
@@ -147,6 +156,7 @@ public class Browser extends javax.swing.JFrame {
              } catch (BadLocationException ex) {
                  Logger.getLogger(Browser.class.getName()).log(Level.SEVERE, null, ex);
              }
+             buffer = "";
          reset();
          }
 
@@ -181,9 +191,15 @@ public class Browser extends javax.swing.JFrame {
               inputTextArea.setBackground(new Color(211, 211, 211));
         }
         if (value == "Blue"){
-             inputTextArea.setBackground(new Color(224,255,255));
+             inputTextArea.setBackground(new Color(245,254,254));
         }
     }//GEN-LAST:event_jComboBoxBackgroundActionPerformed
+
+    private void jResetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jResetButtonActionPerformed
+        reset();
+        this.bufferIndex = 0;
+        inputTextArea.setText("");
+    }//GEN-LAST:event_jResetButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -282,7 +298,7 @@ public class Browser extends javax.swing.JFrame {
        
     static private int[][] delta = {
  //a	b	c	d	e	f	g	h	i	j	k	l	m	n	o	p	q	r	s	t	u	v	w	x	y	z	0	1	2	3	4	5	6	7	8	9	"	(	)	-	=	+	*	space	;
-{q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q1,	q27,	q27,	q27,	q27,	q27,	q22,	q27,	q27,	q27,	q27,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q41,	qError, qError},//q0
+{q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q27,	q1,	q27,	q27,	q27,	q27,	q27,	q22,	q27,	q27,	q27,	q27,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q39,	qError, qError},//q0
 {qError, qError,qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q2,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q28,    qError},//q1
 {qError	,qError,qError,	qError,	qError,	qError,	qError,	qError,	q3,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError},//q2
 {qError	,qError,qError, qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q4,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError},//q3
@@ -290,7 +306,7 @@ public class Browser extends javax.swing.JFrame {
 {qError	,qError,qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q6,     qError},//q5
 {qError	,qError,qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q7,	qError,	qError,	qError,	qError,	qError,	qError, qError},//q6
 {qError	,qError,qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q8,     qError},//q7
-{q9,     q9,	q9,	q9,       q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q20,	q20,	q20,	q20,	q20,	q20,	q20,	q20,	q20,	q20,	q13,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError},//q8
+{q9,     q9,	q9,	q9,       q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q9,	q19,	q19,	q19,	q19,	q19,	q19,	q19,	q19,	q19,	q19,	q13,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError},//q8
 {qError, qError,qError, qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError,	qError,	qError,	qError,	q10,    qError},//q9
 {qError, qError,qError, qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	q11,	qError,	qError,	qError,	qError,	qError, qError},//q10
 {qError, qError,qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError, qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,	qError,     q0},//q11
@@ -350,6 +366,7 @@ public class Browser extends javax.swing.JFrame {
         //sets state and invalid to inital values
         state = q0;
         invalid = false;
+        
 
     };
 
@@ -367,13 +384,13 @@ public class Browser extends javax.swing.JFrame {
     public void process(String in, String buf) throws BadLocationException{
         
         Highlighter highlight = inputTextArea.getHighlighter();
-        HighlightPainter pink = new DefaultHighlighter.DefaultHighlightPainter(new Color (255, 240, 245));
+        HighlightPainter pink = new DefaultHighlighter.DefaultHighlightPainter(new Color (245, 215, 240));
         HighlightPainter yellow = new DefaultHighlighter.DefaultHighlightPainter(new Color (255, 250, 205));
-        HighlightPainter green = new DefaultHighlighter.DefaultHighlightPainter(new Color (240, 255, 240));
+        HighlightPainter green = new DefaultHighlighter.DefaultHighlightPainter(new Color (230, 245, 230));
         HighlightPainter red = new DefaultHighlighter.DefaultHighlightPainter(new Color (240, 128, 128));
-        HighlightPainter blue = new DefaultHighlighter.DefaultHighlightPainter(new Color (240, 255, 255));
+        HighlightPainter blue = new DefaultHighlighter.DefaultHighlightPainter(new Color (135, 200, 255));
         HighlightPainter orange = new DefaultHighlighter.DefaultHighlightPainter(new Color (255, 222, 173));
-        HighlightPainter cyan = new DefaultHighlighter.DefaultHighlightPainter(new Color (224, 255, 255));
+        HighlightPainter cyan = new DefaultHighlighter.DefaultHighlightPainter(new Color (200, 255, 255));
         HighlightPainter magenta = new DefaultHighlighter.DefaultHighlightPainter(new Color (230, 230, 250));
         HighlightPainter grey = new DefaultHighlighter.DefaultHighlightPainter(new Color (238, 233, 233));
         
@@ -387,13 +404,11 @@ public class Browser extends javax.swing.JFrame {
 
             //finds current char, sets to lowercase
             char c = Character.toLowerCase(in.charAt(i));
-            
            
             buf = buf + c;
             this.bufferIndex = this.bufferIndex+1;
             System.out.print(buf);
             
-
             //compares current char to valid steps, w,g,c,and n
             //and sets move to proper location in transition matrix
             switch(c)
@@ -558,64 +573,88 @@ public class Browser extends javax.swing.JFrame {
         if(invalid){
             System.out.println("An invalid character was entered.");
         //if success state is reached , q9, print success message
-        }
-        else if (state == q11){
+        
+        
+        }//Print
+        else if (state == q5){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
-        highlight.addHighlight(x, y, yellow );
+        highlight.addHighlight(x, y, pink );
         buf = "";
-        }
-        else if (state == q18){
+        }//Print ( a )
+        else if (state == q11){
           int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
-        highlight.addHighlight(x, y, red);
+        highlight.addHighlight(x+3, y-2, green);
         buf = "";
-        }
+        }//Print ( " a " )
         else if (state == q18){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
-        highlight.addHighlight(x, y, orange);
+        highlight.addHighlight(x+3, y-2, yellow);
         buf = "";
-        }
+        }//Print ( 1 + 1 )
         else if (state == q21){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
-        highlight.addHighlight(x, y, green);
+        highlight.addHighlight(x+3, y-2, blue);
         buf = "";
-        }
-        else if (state == q26){
-        int x = this.bufferIndex - buf.length();
-        int y = this.bufferIndex;
-        highlight.addHighlight(x, y, blue);
-        buf = "";
-        }
-        else if (state == q31){
+        }//var 
+        else if (state == q24){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
         highlight.addHighlight(x, y, cyan);
         buf = "";
-        }
+        }//var a
+        else if (state == q26){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x+1, y, green);
+        buf = "";
+        }//a
+        else if (state == q27){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x, y, green);
+        buf = "";
+        }// = 
+        else if (state == q29){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x+1, y, magenta);
+        buf = "";
+        } //a = a
+        else if (state == q31){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x+1, y, green);
+        buf = "";
+        }//a = " string "
         else if (state == q36){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
-        highlight.addHighlight(x, y, magenta);
+        highlight.addHighlight(x+1, y, yellow);
+        buf = "";
+        }// a = 0
+        else if (state == q37){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x+1, y, blue);
         buf = "";
         }
-        else if (state == q37){
+        //Comments
+        else if (state == q45){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
         highlight.addHighlight(x, y, grey);
         buf = "";
-        }
-        else if (state == q41){
-        int x = this.bufferIndex - buf.length();
-        int y = this.bufferIndex;
-        highlight.addHighlight(x, y, pink);
-        buf = "";
         }  
+       
    
         }
+         
         }
+        
     }
 
 
@@ -624,6 +663,7 @@ public class Browser extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBoxBackground;
     private javax.swing.JComboBox jComboBoxFont;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jResetButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
