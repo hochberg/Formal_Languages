@@ -1,0 +1,3 @@
+print ( " test print " );
+print ( 1 );
+print ( x );
