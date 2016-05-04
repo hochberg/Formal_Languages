@@ -171,6 +171,7 @@ public class Browser extends javax.swing.JFrame {
          String splitInput[] = input.split("\\r\\n|\\n|\\r");
          //initializes the bufferIndex 
          this.bufferIndex = 0;
+        
          //loops through array of input
          //runs process on each line of inputTextArea text
          for(int i = 0; i < splitInput.length; i++){
@@ -443,7 +444,7 @@ public class Browser extends javax.swing.JFrame {
         HighlightPainter yellow = new DefaultHighlighter.DefaultHighlightPainter(new Color (255, 250, 205));
         HighlightPainter green = new DefaultHighlighter.DefaultHighlightPainter(new Color (230, 245, 230));
         HighlightPainter red = new DefaultHighlighter.DefaultHighlightPainter(new Color (240, 128, 128));
-        HighlightPainter blue = new DefaultHighlighter.DefaultHighlightPainter(new Color (135, 200, 255));
+        HighlightPainter blue = new DefaultHighlighter.DefaultHighlightPainter(new Color (200, 225, 255));
         HighlightPainter orange = new DefaultHighlighter.DefaultHighlightPainter(new Color (255, 222, 173));
         HighlightPainter cyan = new DefaultHighlighter.DefaultHighlightPainter(new Color (200, 255, 255));
         HighlightPainter magenta = new DefaultHighlighter.DefaultHighlightPainter(new Color (230, 230, 250));
@@ -454,6 +455,7 @@ public class Browser extends javax.swing.JFrame {
 
             //initalizes local variable, move
             int move;
+        
 
             //finds current char, sets to lowercase
             char c = Character.toLowerCase(in.charAt(i));
@@ -622,6 +624,7 @@ public class Browser extends javax.swing.JFrame {
             //changes state depending on current state and next move that
             //was just calculated
             state = delta[state][move];
+                System.out.println(state);
         
         //in case of invalid character, prints invalid message
         if(invalid){
@@ -666,6 +669,12 @@ public class Browser extends javax.swing.JFrame {
         buf = "";
         }//a
         else if (state == q27){
+        int x = this.bufferIndex - buf.length();
+        int y = this.bufferIndex;
+        highlight.addHighlight(x, y, green);
+        buf = "";
+        }  //a
+        else if (state == q28){
         int x = this.bufferIndex - buf.length();
         int y = this.bufferIndex;
         highlight.addHighlight(x, y, green);
